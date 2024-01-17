@@ -13,6 +13,7 @@
               </a>
               {% else %}
               <a href="{% url 'toggle_complete' task.id %}">
+                click here to complete
                 <i class="fa-solid fa-clock-rotate-left" style="color: red; font-size: 24px;"></i>
               </a>
               {% endif %}
