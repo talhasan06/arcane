@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container  my-5">
+<div class="container my-5">
     {% if messages %}
         <div class="alert alert-success text-center">
             {% for message in messages %}
@@ -8,16 +8,16 @@
             {% endfor %}
         </div>
     {% endif %}
-    <div class="text-center">
+    <div class="text-center mb-5">
         <div style="border-bottom: 3px solid #007bff; display: inline-block;" class="mb-3">
             <h3 class="text-primary-emphasis"><span class="text-primary">Hello {{user.first_name}}</span>, Welcome to Arcane</h3>
         </div>
         <h6>Don't let your thoughts fly away</h6>
     </div>
     {% if request.user.is_authenticated and for_filter %}
-        <div class="row row-cols-1 row-cols-md-4 g-2 mb-4">
+        <div class="row row-cols-1 row-cols-md-4 g-2 mb-4 mx-auto">
             {% for task in tasks %}
-                <div class="col">
+                <div class="col d-flex justify-content-center align-items-center">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                         <a href="{% url 'task_detail' task.id %}" class="text-decoration-none">
@@ -31,16 +31,18 @@
                         <p>Due date: {{task.due_date}}</p>
                         <p>Priority: {{task.priority}}</p>
                         <p>Category: {{task.category}}</p>
-                        {% if task.completed %}
-                        <div class="bg-success px-2 py-1" style="display: inline-block;">
-                            <span class="font-medium text-white">Completed</span>
+                        <div class="d-flex justify-content-between">
+                            {% if task.completed %}
+                            <div class="bg-success px-2 py-1" style="display: inline-block;">
+                                <span class="font-medium text-white">Completed</span>
+                            </div>
+                            {% else %}
+                            <div class="bg-danger px-2 py-1" style="display: inline-block;">
+                                <span class="font-medium text-white">Pending</span>
+                            </div>
+                            {% endif %}
+                            <a href="{% url 'edit_task' task.id %}" style="font-size: 18px;">Edit</a>
                         </div>
-                        {% else %}
-                        <div class="bg-danger px-2 py-1" style="display: inline-block;">
-                            <span class="font-medium text-white">Pending</span>
-                        </div>
-                        {% endif %}
-                        <a href="{% url 'edit_task' task.id %}">Edit</a>
                         </div>
                     </div>
                 </div>
