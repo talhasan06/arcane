@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container  my-5">
+    {% if messages %}
+        <div class="alert alert-success text-center">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="text-center">
+        <div style="border-bottom: 3px solid #007bff; display: inline-block;" class="mb-3">
+            <h3 class="text-primary-emphasis"><span class="text-primary">Hello {{user.first_name}}</span>, Welcome to Arcane</h3>
+        </div>
+        <h6>Don't let your thoughts fly away</h6>
+    </div>
+    {% if request.user.is_authenticated and for_filter %}
+        <div class="row row-cols-1 row-cols-md-4 g-2 mb-4">
+            {% for task in tasks %}
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <a href="{% url 'task_detail' task.id %}" class="text-decoration-none">
+                            {% if not task.completed %}
+                                <h5 class="card-title">{{task.title}}</h5>
+                            {% else %}
+                                <h5 class="card-title text-decoration-line-through">{{task.title}}</h5>
+                            {% endif %}
+                        </a>
+                        <p class="card-text">{{ task.description |  truncatechars:30 }} {% if value|length > 30 %}...{% endif %}</p>
+                        <p>Due date: {{task.due_date}}</p>
+                        <p>Priority: {{task.priority}}</p>
+                        <p>Category: {{task.category}}</p>
+                        {% if task.completed %}
+                        <div class="bg-success px-2 py-1" style="display: inline-block;">
+                            <span class="font-medium text-white">Completed</span>
+                        </div>
+                        {% else %}
+                        <div class="bg-danger px-2 py-1" style="display: inline-block;">
+                            <span class="font-medium text-white">Pending</span>
+                        </div>
+                        {% endif %}
+                        <a href="{% url 'edit_task' task.id %}">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if not request.user.is_authenticated %}
+        <div class="text-center mt-5">
+            <h4 class="text-danger">Please login to access your tasks</h4>
+        </div>
+    {% endif%}
+
+    {% block all_tasks %}
+    {% endblock %}
+    {% block completed_content %}
+    {% endblock %}
+    {% block remaining_content %}
+    {% endblock %}
+    {% block due_date %}
+    {% endblock %}
+    {% block category %}
+    {% endblock %}
+    {% block priority %}
+    {% endblock %}
+    {% block filter %}
+    {% endblock %}
+</div>
+{% endblock %}

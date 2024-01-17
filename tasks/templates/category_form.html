@@ -1,0 +1,5 @@
+<form method="post" action="{% url 'add_category' %}" class="form">
+  {% csrf_token %}
+  {{ cat_form.as_p}}
+  <button type="submit" class="btn btn-success">Create Category</button>
+</form>

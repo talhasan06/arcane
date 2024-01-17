@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        
+  <body>
+    {% if form.non_field_errors %} 
+        {% for error in form.non_field_errors %}
+            <div class="text-primary">
+            <p class="font-bold">Error!</p>
+            <p class="block sm:inline">{{ error }}</p>
+            </div>
+        {% endfor %} 
+    {% endif %}
+
+    <div class="">
+      <h1 class="">Add task</h1>
+      <div class="">
+        <form method="post">
+        {% csrf_token %}
+
+          {% for hidden_field in form.hidden_fields %} 
+            {{hidden_field.errors }} 
+            {{ hidden_field }} 
+          {% endfor %}
+
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+              <label
+                class=""
+                for="{{ form.title.id_for_label }}"
+              >
+                {{ form.title.label }}
+              </label>
+              {{ form.title }} 
+            {% if form.title.errors %} 
+                {% for error in form.title.errors %}
+                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                {% endfor %} 
+            {% endif %}
+            </div>
+            <div class="">
+              <label
+                class=""
+                for="{{ form.description.id_for_label }}"
+              >
+                {{ form.description.label }}
+              </label>
+              {{ form.description }} 
+            {% if form.description.errors %} 
+                {% for error in form.description.errors %}
+                    <p class="">{{ error }}</p>
+                {% endfor %} 
+            {% endif %}
+            </div>
+            <div class="">
+              <label
+                class=""
+                for="{{ form.created_date.id_for_label }}"
+              >
+                {{ form.created_date.label }}
+              </label>
+              {{ form.created_date }} 
+            {% if form.created_date.errors %} 
+                {% for error in form.created_date.errors %}
+                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                {% endfor %} 
+            {% endif %}
+            </div>
+          </div>
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="{{ form.due_date.id_for_label }}"
+              >
+                {{ form.due_date.label }}
+              </label>
+              {{ form.due_date }} 
+              {% if form.due_date.errors %} 
+                {% for error in form.due_date.errors %}
+                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                {% endfor %} 
+              {% endif %}
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="{{ form.priority.id_for_label }}"
+            >
+              {{ form.priority.label }}
+            </label>
+
+            {{ form.priority }} 
+
+            {% if form.priority.errors %} 
+              {% for error in form.priority.errors %}
+                  <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+              {% endfor %} 
+            {% endif %}
+          </div>
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="{{ form.completed.id_for_label }}"
+              >
+                {{ form.completed.label }}
+              </label>
+              {{ form.completed }} 
+              {% if form.completed.errors %} 
+                {% for error in form.completed.errors %}
+                <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                {% endfor %} 
+              {% endif %}
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="{{ form.category.id_for_label }}"
+              >
+                {{ form.category.label }}
+              </label>
+              {{ form.category }} 
+              {% if form.category.errors %} 
+                {% for error in form.category.errors %}
+                <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                {% endfor %} 
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="">
+            <button
+              class="btn btn-primary"
+              type="submit"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}
