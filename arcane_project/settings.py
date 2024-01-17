@@ -79,18 +79,18 @@ WSGI_APPLICATION = 'arcane_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         # Feel free to alter this value to suit your needs.
-#         default='postgres://arcane_project_5lqa_user:or7BJFIK4NW5OnEZuBpgAmCdwwWWAC9F@dpg-cmjr7onqd2ns73bkuj9g-a.oregon-postgres.render.com/arcane_project_5lqa',
-#     )
-# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://arcane_project_0ctm_user:m0JWeH0qixVbfig0nTXcTITtWviMfVGi@dpg-cmjtd6fqd2ns73blpsi0-a.oregon-postgres.render.com/arcane_project_0ctm',
+    )
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
