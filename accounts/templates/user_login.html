@@ -1,20 +1,30 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 {% block content %}
-<div class="form-group w-50 container">
-  <br>
-  <p class="text-center h2">Login</p>
-  <br>
-  <form method="post" class="">
-    {% csrf_token %}
-    <div class="form-group">
-      <input type="text" class="form-control" name="username" placeholder="Username">
+<div class="row align-items-center justify-content-center vh-100 w-100" >
+  <div class="form-group col-12 col-md-10 border shadow p-4 bg-white rounded-3 ">
+    <div class="border-bottom bg-white">
+      <h3 class="text-primary">Arcane</h3>
     </div>
     <br>
-    <div class="form-group">
-      <input type="password" class="form-control" name="password" placeholder="Password">
-    </div>
+    <p class="text-center h2" style="color:#384572;">Login</p>
     <br>
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
+    <form method="post">
+      {% csrf_token %}
+      <div class="row d-md-flex flex-column justify-content-center align-items-center">
+        <div class="col-12 col-md-6">
+          <input type="text" class="form-control mx-auto" name="username" placeholder="Username">
+          <br>
+          <input type="password" class="form-control w-md-50 w-100" name="password" placeholder="Password">
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary px-5 mb-3">Login</button>
+          </div>
+          <p style="font-size: 18px;">Not registered yet? <a href="{% url 'register' %}" class="text-decoration-none">Create an account</a></p>
+        </div>
+      </div>
+      <br>
+      <br>
+    </form>
+    
+  </div>
 </div>
 {% endblock %}

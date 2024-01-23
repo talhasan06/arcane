@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary rounded">
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary rounded">
     <div class="container-fluid">
       <a class="navbar-brand fw-semibold text-primary" href="#" style="font-size:26px;">Arcane</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
           <li class="nav-item ms-4">
             <a class="nav-link active link-primary fw-medium" aria-current="page" href="{% url 'remaining' %}" id="pendingButton">Pending</a>
           </li>
-          <!-- filter dropdown  -->
+          filter dropdown 
           <li class="dropdown">
             <a class="nav-link dropdown-toggle fw-medium" role="button" data-bs-toggle="dropdown" aria-expanded="false"  href="#" >
                 Filter by category
@@ -27,7 +27,7 @@
                 {% endfor %}
             </ul>
           </li>
-          <!--Sorting dropdown  -->
+          Sorting dropdown 
           <li class="dropdown">
             <a class="nav-link dropdown-toggle fw-medium" role="button" data-bs-toggle="dropdown" aria-expanded="false"  href="#" >
                 Sort By
@@ -52,4 +52,68 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  {% if request.user.is_authenticated %}
+    <nav class="navbar bg-body-tertiary container mb-3">
+      <div class="container-fluid">
+        
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <div class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profile
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+
+        </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-primary" id="offcanvasNavbarLabel">Arcane</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}">All Tasks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'completed' %}">Completed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'remaining' %}">Pending</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter by category
+                </a>
+                <ul class="dropdown-menu">
+                    {% for cat in categories %}
+                      <li><a class="dropdown-item" href="{% url 'category_wise_post' cat.slug %}">{{cat.name}}</a></li>
+                    {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort by
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'task_list' 'due-date' %}" id="dueDateSort">Due Date</a></li>
+                  <li><a class="dropdown-item" href="{% url 'task_list' 'priority' %}">Priority</a></li>
+                  <li><a class="dropdown-item" href="{% url 'task_list' 'category' %}">Category</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  {% endif %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container my-5">
+<div class="bg-body-tertiary p-5">
     {% if messages %}
         <div class="alert alert-success text-center">
             {% for message in messages %}
@@ -8,14 +8,39 @@
             {% endfor %}
         </div>
     {% endif %}
-    <div class="text-center mb-5">
+    
+    <!-- <div class="text-center mb-5">
         <div style="border-bottom: 3px solid #007bff; display: inline-block;" class="mb-3">
             <h3 class="text-primary-emphasis"><span class="text-primary">Hello {{user.first_name}}</span>, Welcome to Arcane</h3>
         </div>
         <h6>Don't let your thoughts fly away</h6>
+    </div> -->
+    <div class="mb-4">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h3>Project List</h3>
+                <p>Here is a list of projects you have created</p>
+            </div>
+            <div>
+                <a href="" class="btn btn-primary">Export CSV</a>
+            </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-between bg-white p-3 rounded-3">
+            <div class="d-flex">
+                <li {% if request.path == '/' %}class="active"{% endif %}><a href="{% url 'home' %}">Todo</a></li>
+                <li {% if request.path == '/tasks/remaining' %}class="active"{%else%}class="none"{% endif %} ><a href="{% url 'home' %}" class="text-decoration-none">In progress</a></li>
+
+                <a class="nav-link {% if request.path   == '/tasks/completed/' %}active{% endif %}" href="{% url 'completed' %}">Completed</a>
+            </div>
+            <div>
+                <a class="btn btn-outline-dark">Filter</a>
+                <a class="btn btn-outline-dark">Sort</a>
+                <a class="btn btn-outline-dark">Add new</a>
+            </div>
+        </div>
     </div>
     {% if request.user.is_authenticated and for_filter %}
-        <div class="row row-cols-1 row-cols-md-4 g-2 mb-4 mx-auto">
+        <div class="row row-cols-1 row-cols-md-4 g-2 mb-4 mx-auto bg-body-tertiary">
             {% for task in tasks %}
                 <div class="col d-flex justify-content-center align-items-center">
                     <div class="card" style="width: 18rem;">

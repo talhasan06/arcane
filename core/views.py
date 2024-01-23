@@ -21,8 +21,8 @@ def home(request,category_slug = None):
                 return redirect('home')
         else:
             categories = all_categories 
+        return render (request,'index.html',{'tasks':tasks,'categories':categories,'for_filter':'for_filter'})
     else:
-        categories=[]
+        return render (request,'not_login.html')
 
-    return render (request,'index.html',{'tasks':tasks,'categories':categories,'for_filter':'for_filter'})
 
