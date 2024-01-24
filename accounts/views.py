@@ -12,6 +12,7 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.contrib.auth.models import User
+from django.http import HttpResponseBadRequest
 from django.contrib import messages
 
 # Create your views here.
@@ -35,6 +36,10 @@ class UserRegistrationFormView(FormView):
         email.send()
         messages.success(self.request, 'Check your email for verification.')
         return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        
+        return self.render_to_response(self.get_context_data(form=form))
     
 def activate(request,uid64,token):
     try:
