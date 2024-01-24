@@ -4,7 +4,7 @@
         {% if tasks %}
             <div class="row row-cols-1 row-cols-md-4 g-2 mb-4">
                 {% for task in tasks %}
-                    <div class="card rounded-4 me-2">
+                    <div class="card rounded-4 m-2">
                         <div class="card-body">
                             <div class="d-flex mb-3">
                                 <button class="btn btn-dark rounded-pill">{{task.category}}</button>
@@ -14,7 +14,7 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                         <span class="dropdown-item">
-                                            <a href="{% url 'edit_task' task.id %}" class="text-decoration-none text-warning">
+                                            <a href="{% url 'edit_task' task.id %}" class="text-decoration-none text-primary">
                                                 <i class="fas fa-pen mx-2"></i> Update
                                             </a>
                                         </span>
@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        <a href="{% url 'task_detail' task.id %}" class="text-decoration-none text-dark">
+                        <a href="{% url 'task_detail' task.id %}" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{ task.id }}">
                             <h5 class="card-title d-flex justify-content-between">{{task.title}}
                             {% if task.completed %}
                             <p class="fs-5"><i class="fa-regular fa-circle-check fw-bold text-success"></i></p>
@@ -38,6 +38,36 @@
                             {% endif %}
                             </h5>
                         </a>
+                        <!-- modal start -->
+                            <div class="modal fade" id="exampleModal{{ task.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{task.title}}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex">
+                                            <p class="fw-medium me-1">Status: </p>
+                                            {% if task.completed %} 
+                                            <p class="text-success rounded px-1" style="background-color: #E5FAF0;">Completed</p> 
+                                            {% else %} 
+                                            <p class="text-danger rounded px-1" style="background-color:#f19797;">Pending</p> 
+                                            {%endif%} 
+                                        </div>
+                                        <div class="d-flex">
+                                            <p class="fw-medium me-1">Due Date:</p>
+                                            <p>{{task.due_date}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        <!-- model end -->
                         <p class="card-text">{{ task.description |  truncatechars:100 }} {% if value|length > 30 %}...{% endif %}</p>
                         </div>
                         <div class="card-footer bg-white d-flex justify-content-between">
