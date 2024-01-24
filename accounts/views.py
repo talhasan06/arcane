@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.views.generic import FormView
+from django.views.generic.edit import FormView
 from .forms import UserRegistrationForm
 from django.contrib.auth import logout
 from django.urls import reverse_lazy
@@ -26,7 +26,7 @@ class UserRegistrationFormView(FormView):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        confirm_link = f"http://127.0.0.1:8000/accounts/register/active/{uid}/{token}"
+        confirm_link = f"https://arcane-project.onrender.com/accounts/register/active/{uid}/{token}"
         login_link = "https://arcane-project.onrender.com/accounts/login/"
         email_subject = 'Verify Your Email'
         email_body=render_to_string('email_verification.html', {'confirm_link': confirm_link,'login_link':login_link})
