@@ -1,13 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="my-3 form-control">
-    <h2>Edit Task</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-success" type="submit">Update Task</button>
-    </form>
-    <a href="{% url 'home' %}">Back to Home</a>
+<div class="container my-3 bg-body-tertiary p-3">
+    <div class="col-12 d-md-flex justify-content-center">
+        <form method="post" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.title.id_for_label }}">Title:</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                    <span class="text-danger">{{ form.title.errors.0 }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group my-2">
+                <label for="{{ form.description.id_for_label }}">Description:</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <span class="text-danger">{{ form.description.errors.0 }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group my-2">
+                <label for="{{ form.due_date.id_for_label }}">Due date:</label>
+                {{ form.due_date }}
+                {% if form.due_date.errors %}
+                  <span class="text-danger">{{ form.due_date.errors.0 }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group my-2">
+                <label for="{{ form.due_time.id_for_label }}">Due time:</label>
+                {{ form.due_time }}
+                {% if form.due_time.errors %}
+                    <span class="text-danger">{{ form.due_time.errors.0 }}</span>
+                {% endif %}
+            </div>
+           
+            <div class="form-group col-12 my-2">
+                <label for="{{ form.priority.id_for_label }}">Priority:</label>
+                {{ form.priority }}
+                {% if form.priority.errors %}
+                    <span class="text-danger">{{ form.priority.errors.0 }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group col-12 my-2">
+                <label for="{{ form.category.id_for_label }}">Category:</label>
+                {{ form.category }}
+                <a class="text-decoration-none">create new category</a>
+            </div>
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-primary px-4">Submit</a>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+            <br>
+        </form>
+    </div>
 </div>
 {% endblock %}

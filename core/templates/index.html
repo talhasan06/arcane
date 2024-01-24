@@ -31,14 +31,33 @@
                                       </span>
                                     </li>
                                     <li>
-                                      <span class="dropdown-item">
-                                        <a href="{% url 'delete' task.id %}" class="text-decoration-none text-danger">
+                                      <span class="dropdown-item" style="cursor: pointer;">
+                                        <a class="text-decoration-none text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{task.id}}">
                                             <i class="fas fa-trash mx-2"></i> Delete
                                         </a>
                                       </span>
                                     </li>
                                   </ul>
                             </div>
+                            <!-- delete modal -->
+                            <div class="modal fade" id="deleteModal{{task.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete task !!</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete the task "{{ task.title }}"?</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="{% url 'remove_task' task.id %}" class="btn btn-danger">Yes, Delete</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end delete modal -->
                         </div>
                     <a class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{ task.id }}">
                         <h5 class="card-title d-flex justify-content-between" style="cursor: pointer;">{{task.title}}
@@ -70,10 +89,11 @@
                                     <p class="fw-medium me-1">Due Date:</p>
                                     <p>{{task.due_date}}</p>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button> -->
+                                <p class="fw-medium py-2 me-1 bg-body-tertiary">Description: <span class="fw-normal">{{task.description}}</span> </p>
+                                {% if not task.completed %}
+                                  <a href="{% url 'toggle_complete' task.id %}" class="btn text-white" style="background-color: #7F56D9;"><i class="fa-solid fa-check me-1"></i>mark as done</a>
+                                {% endif %}
+                             
                             </div>
                           </div>
                         </div>
