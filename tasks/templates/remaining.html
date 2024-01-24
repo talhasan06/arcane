@@ -3,30 +3,46 @@
   {% if tasks %}
   <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
     {% for task in tasks %}
-    <div class="col d-flex justify-content-center align-items-center">
-      <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <a href="{% url 'task_detail' task.id %}" class="text-decoration-none">
-                <h5 class="card-title">{{task.title}}</h5>
-            </a>
-            <p class="card-text">{{ task.description |  truncatechars:30 }} {% if value|length > 30 %}...{% endif %}</p>
-            <p>Due date: {{task.due_date}}</p>
-            <p>Priority: {{task.priority}}</p>
-            <p>Category: {{task.category}}</p>
-            <div class="d-flex justify-content-between">
-              {% if task.completed %}
-              <div class="bg-success px-2 py-1" style="display: inline-block;">
-                  <span class="font-medium text-white">Completed</span>
-              </div>
-              {% else %}
-              <div class="bg-danger px-2 py-1" style="display: inline-block;">
-                  <span class="font-medium text-white">Pending</span>
-              </div>
-              {% endif %}
-              <a href="{% url 'delete' task.id %}" style="font-size: 18px;">Delete</a>
+      <div class="card rounded-4 me-2">
+        <div class="card-body">
+            <div class="d-flex mb-3">
+                <button class="btn btn-dark rounded-pill">{{task.category}}</button>
+                <!-- <p><i class="fa-solid fa-ellipsis fs-4"></i></p> -->
+                <div class="dropdown ms-auto">
+                    <i class="fas fa-ellipsis-vertical fs-4" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <li>
+                          <span class="dropdown-item">
+                            <a href="{% url 'edit_task' task.id %}" class="text-decoration-none text-warning">
+                                <i class="fas fa-pen mx-2"></i> Update
+                            </a>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="dropdown-item">
+                            <a href="{% url 'delete' task.id %}" class="text-decoration-none text-danger">
+                                <i class="fas fa-trash mx-2"></i> Delete
+                            </a>
+                          </span>
+                        </li>
+                      </ul>
+                </div>
             </div>
-          </div>
-      </div>
+        <a href="{% url 'task_detail' task.id %}" class="text-decoration-none text-dark">
+            <h5 class="card-title d-flex justify-content-between">{{task.title}}
+              {% if task.completed %}
+              <p class="fs-5"><i class="fa-regular fa-circle-check fw-bold text-success"></i></p>
+              {% else %}
+              <p class="fs-5"><i class="fa-regular fa-hourglass-half text-danger fw-bold"></i></p>
+              {% endif %}
+            </h5>
+        </a>
+          <p class="card-text">{{ task.description |  truncatechars:100 }} {% if value|length > 30 %}...{% endif %}</p>
+        </div>
+        <div class="card-footer bg-white d-flex justify-content-between">
+            <p class="fw-semibold">Priority: {{task.priority}}</p>
+            <p class="fw-medium"><i class="fa-solid fa-calendar-days"></i> {{task.due_date}}</p>
+        </div>
     </div>
     {% endfor %}
   </div>
