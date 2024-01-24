@@ -1,20 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="bg-body-tertiary p-5">
-    {% if messages %}
-        <div class="alert alert-success text-center">
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        </div>
-    {% endif %}
-    
-    <!-- <div class="text-center mb-5">
-        <div style="border-bottom: 3px solid #007bff; display: inline-block;" class="mb-3">
-            <h3 class="text-primary-emphasis"><span class="text-primary">Hello {{user.first_name}}</span>, Welcome to Arcane</h3>
-        </div>
-        <h6>Don't let your thoughts fly away</h6>
-    </div> -->
     <div class="mb-4">
         <div class="d-flex justify-content-between">
             <div>
