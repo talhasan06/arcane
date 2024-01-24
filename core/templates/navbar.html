@@ -1,59 +1,4 @@
-<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary rounded">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-semibold text-primary" href="#" style="font-size:26px;">Arcane</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {% if request.user.is_authenticated %}
-          <li class="nav-item ms-4">
-            <a class="nav-link active link-primary fw-medium" aria-current="page" href="{% url   'home' %} " id="allTasksButton">All tasks</a>
-          </li>
-          <li class="nav-item ms-4">
-            <a class="nav-link active link-primary fw-medium" aria-current="page" href="{% url 'completed' %}" id="completedButton">Completed</a>
-          </li>
-          <li class="nav-item ms-4">
-            <a class="nav-link active link-primary fw-medium" aria-current="page" href="{% url 'remaining' %}" id="pendingButton">Pending</a>
-          </li>
-          filter dropdown 
-          <li class="dropdown">
-            <a class="nav-link dropdown-toggle fw-medium" role="button" data-bs-toggle="dropdown" aria-expanded="false"  href="#" >
-                Filter by category
-            </a>
-            <ul class="dropdown-menu">
-                {% for cat in categories %}
-                  <li><a class="dropdown-item" href="{% url 'category_wise_post' cat.slug %}">{{cat.name}}</a></li>
-                {% endfor %}
-            </ul>
-          </li>
-          Sorting dropdown 
-          <li class="dropdown">
-            <a class="nav-link dropdown-toggle fw-medium" role="button" data-bs-toggle="dropdown" aria-expanded="false"  href="#" >
-                Sort By
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'task_list' 'due-date' %}" id="dueDateSort">Due Date</a></li>
-                <li><a class="dropdown-item" href="{% url 'task_list' 'priority' %}">Priority</a></li>
-                <li><a class="dropdown-item" href="{% url 'task_list' 'category' %}">Category</a></li>
-            </ul>
-          </li>
-          {% endif %}
-        </ul>
-        <div class="d-flex flex-column flex-md-row align-items-center">
-          {% if request.user.is_authenticated %}
-            <span class="text-success me-4 fw-medium">{{user.first_name}} {{user.last_name}}</span>
-            <a class="btn btn-info m-2" href="{% url 'add_task' %}">Add Task</a>
-            <a class="btn btn-warning m-2" href="{% url 'logout' %}">Logout</a>
-          {% else %}
-            <a class="btn btn-primary m-2" href="{% url 'login' %}">Login</a>
-            <a class="btn btn-success m-2" href="{% url 'register' %}">Signup</a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </nav> -->
-  {% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
     <nav class="navbar bg-body-tertiary container mb-3">
       <div class="container-fluid">
         
@@ -73,7 +18,7 @@
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-primary" id="offcanvasNavbarLabel">Arcane</h5>
+            <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Arcane</h3>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
@@ -116,4 +61,4 @@
         </div>
       </div>
     </nav>
-  {% endif %}
+{% endif %}
