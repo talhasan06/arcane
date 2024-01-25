@@ -10,6 +10,7 @@ from django.views.generic.edit import FormView
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth import get_user_model
+from django.http import HttpResponseRedirect
 
 categories = Category.objects.all()
 
@@ -55,7 +56,7 @@ class CompletedTaskListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
+        context['categories'] = Category.objects.filter(user=self.request.user)
         return context
     
 class RemainingTaskListView(ListView):
@@ -63,13 +64,14 @@ class RemainingTaskListView(ListView):
     template_name = 'remaining.html'
     context_object_name = 'tasks'
 
+
     def get_queryset(self):
         user = self.request.user
         return Task.objects.filter(user=user,completed=False)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
+        context['categories'] = Category.objects.filter(user=self.request.user)
         return context
         
 class TaskCreateView(LoginRequiredMixin, FormView):
@@ -77,8 +79,9 @@ class TaskCreateView(LoginRequiredMixin, FormView):
     success_url = '/'
     def get(self, request):
         form = TaskForm()
+        category_form = CategoryForm()
         categories = Category.objects.filter(user=request.user)
-        return render(request, self.template_name, {'form': form,'categories':categories})
+        return render(request, self.template_name, {'form': form,'categories':categories,'category_form': category_form})
 
     def post(self, request):
         form = TaskForm(request.POST)
@@ -93,16 +96,19 @@ class TaskCreateView(LoginRequiredMixin, FormView):
             email.attach_alternative(email_body,"text/html")
             email.send()
             return super().form_valid(form)
-        return render(request, self.template_name, {'form': form})
+        else:
+            categories = Category.objects.filter(user=request.user)
+            return render(request, self.template_name, {'form': form, 'categories':categories})
+       
     
 class EditTaskView(LoginRequiredMixin,View):
     template_name='edit_task.html'
 
     def get(self,request,task_id):
         task = get_object_or_404(Task,id = task_id,user=request.user)
-        user_categories = Category.objects.filter(user=request.user)
+        categories = Category.objects.filter(user=request.user)
         form = TaskForm(instance=task,initial={'category': task.category})
-        return render(request,self.template_name,{'form':form,'task':task_id,'user_categories': user_categories})
+        return render(request,self.template_name,{'form':form,'task':task_id,'categories': categories})
     
     def post(self, request, task_id):
         task = get_object_or_404(Task, id=task_id, user=request.user)
@@ -114,21 +120,16 @@ class EditTaskView(LoginRequiredMixin,View):
             return redirect('home')
         return render(request, self.template_name, {'form': form, 'task_id': task_id})
 
-class CategoryCreateView(View):
-    template_name = 'category_form.html'
+def create_category(request):
 
-    def get(self, request):
-        form = CategoryForm()
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request):
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            category = form.save(commit=False)
-            category.user = request.user
-            category.save()
-            return redirect('add_task')
-        return render(request, self.template_name, {'cat_form': form})
+  if request.method == 'POST':
+    form = CategoryForm(request.POST)
+    if form.is_valid():  
+      category = form.save(commit=False)
+      category.user = request.user
+      category.save()  
+      return redirect('add_task')
+  return redirect('add_task')
 
 class TaskDetailView(DetailView):
     model = Task

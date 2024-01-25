@@ -54,7 +54,7 @@
                 </select>
             </div>
             <a style="cursor: pointer;" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">add new category</a>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mt-2">
               <button type="submit" class="btn btn-primary">Add Task</button>
               <a href="{% url 'home' %}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">back home</a>
             </div>
@@ -64,8 +64,8 @@
     </div>
   </div>
 </div>
-  <!-- modal start -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- modal start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -73,10 +73,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            {% include 'category_form.html' %}
+          <form method="POST" action="{% url 'add_category' %}">
+
+            {% csrf_token %}
+          
+            {{ category_form }}
+            <button type="submit" class="btn btn-primary mt-2">Add category</button>
+          </form>
         </div>
     </div>
     </div>
-  </div>
-  <!-- modal end -->
+</div>
+<!-- modal end -->
 {% endblock %}
