@@ -1,11 +1,11 @@
 <form method="post" action="{% url 'add_category' %}" class="form">
   {% csrf_token %}
   <div class="mb-2">
-    <label for="{{ cat_form.name.id_for_label }}" class="">Name:</label>
-    {{ cat_form.name }}
+    <label for="{{ form.name.id_for_label }}" class="">Name:</label>
+    {{ form.name }}
   </div>
-  {% if cat_form.name.errors %}
-    <span class="text-danger">{{ cat_form.name.errors.0 }}</span>
+  {% if form.name.errors %}
+    <span class="text-danger">{{ form.name.errors.0 }}</span>
   {% endif %}
   <button type="submit" class="btn btn-success">Create</button>
 </form>

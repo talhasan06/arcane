@@ -11,10 +11,8 @@ class Category(models.Model):
     slug = models.SlugField(max_length=100,unique=True, null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        # Generate slug if it is not provided
         if not self.slug:
             self.slug = slugify(self.name)
-
         super().save(*args, **kwargs)
 
     def __str__(self):

@@ -77,8 +77,8 @@ class TaskCreateView(LoginRequiredMixin, FormView):
     success_url = '/'
     def get(self, request):
         form = TaskForm()
-        cat_form = CategoryForm()
-        return render(request, self.template_name, {'form': form,'cat_form':cat_form})
+        categories = Category.objects.filter(user=request.user)
+        return render(request, self.template_name, {'form': form,'categories':categories})
 
     def post(self, request):
         form = TaskForm(request.POST)
@@ -100,8 +100,9 @@ class EditTaskView(LoginRequiredMixin,View):
 
     def get(self,request,task_id):
         task = get_object_or_404(Task,id = task_id,user=request.user)
-        form = TaskForm(instance=task)
-        return render(request,self.template_name,{'form':form,'task':task_id})
+        user_categories = Category.objects.filter(user=request.user)
+        form = TaskForm(instance=task,initial={'category': task.category})
+        return render(request,self.template_name,{'form':form,'task':task_id,'user_categories': user_categories})
     
     def post(self, request, task_id):
         task = get_object_or_404(Task, id=task_id, user=request.user)
@@ -118,7 +119,7 @@ class CategoryCreateView(View):
 
     def get(self, request):
         form = CategoryForm()
-        return render(request, self.template_name, {'cat_form': form})
+        return render(request, self.template_name, {'form': form})
 
     def post(self, request):
         form = CategoryForm(request.POST)
@@ -149,7 +150,6 @@ class ToggleCompleteView(View):
             task.completed = not task.completed
             task.save()
             if task.completed:
-                # User = get_user_model()
 
                 email_subject = 'Task Completed'
                 task_title=task.title
