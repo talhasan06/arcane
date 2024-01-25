@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container my-5">
+<div class="container my-3 bg-body-tertiary py-3">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
@@ -9,25 +9,32 @@
           <form method="post" class="form">
             {% csrf_token %}
             {{ form.as_p }}
-            <a href="#category-here">add new category</a>
+            <a style="cursor: pointer;" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">add new category</a>
             <br><br>
-            <button type="submit" class="btn btn-primary">Add Task</button>
-            <br>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Add Task</button>
+              <a href="{% url 'home' %}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">back home</a>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row justify-content-center mt-4" id="category-here">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">Add Category</div>
-      <div class="card-body">
-        {% include 'category_form.html' %}
-      </div>
+  <!-- modal start -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add new Category</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            {% include 'category_form.html' %}
+        </div>
+    </div>
     </div>
   </div>
+  <!-- modal end -->
 </div>
-</div>
+
 {% endblock %}
