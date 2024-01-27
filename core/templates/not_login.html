@@ -32,7 +32,7 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'product' %}">Product</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Solutions</a>
+                    <a class="nav-link" href="#startwith">Solutions</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#about">About us</a>
@@ -69,7 +69,6 @@
             <p class="text-uppercase fw-medium">join over 2000 highly productive teams</p>
         </div>
         <!-- cards -->
-    
         <section class="mb-2 d-none d-md-block">
         <div class="row row-cols-1 row-cols-md-4 g-4">
             <div class="col-12">
@@ -110,12 +109,14 @@
             </div>
         </div>
         </section>
-
         <!-- GET STARTED WITH A FREE PLAN -->
-        <div class="row my-5">
+        <section class="row my-5" id="startwith">
+          <div class="col-12 col-md-6">
+            <img src="{% static 'img/task-manage.jpg' %}" alt="" class="w-100">
+          </div>
           <div class="col-12 col-md-6 d-flex flex-column justify-content-center ">
             <h1>Get Started With <br>A Free plan</h1>
-            <p class="text-secondary my-3" style="width: 24rem;">Define doesn't just fill up your entire calendar and present you from being available.Instead define will dynamically shift events from free to busy on notices.</p>
+            <p class="text-secondary my-3" >Define doesn't just fill up your entire calendar and present you from being available.Instead define will dynamically shift events from free to busy on notices.</p>
             <div class=" d-flex text-secondary my-3">
               <p class="me-3"><i class="fa-regular fa-circle-check text-success me-2"></i>Free 30-day trial</p>
               <p><i class="fa-regular fa-circle-check text-success me-2"></i>No credit card required</p>
@@ -124,11 +125,29 @@
               <a href="{% url 'register' %}" class="btn btn-success rounded-pill"><span class="px-1">Try Free Trial</span></a>
             </div>
           </div>
-          <div class="col-12 col-md-6">
-            <img src="{% static 'img/task-manage.jpg' %}" alt="" class="w-100">
+        </section>
+        <!-- reviews -->
+        <section class="my-lg-9 my-5">
+          <div class="container">
+             <div class="row border-top border-bottom">
+                <div class="col-lg-4 col-md-4 col-12 border-end-md border-bottom border-bottom-md-0">
+                   <div class="text-center p-5">
+                      <img src="{% static 'img/award-logo-3.svg' %}" alt="award" class="">
+                   </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12 border-end-md border-bottom border-bottom-md-0">
+                   <div class="text-center p-5">
+                      <img src="{% static 'img/award-logo-2.svg' %}" alt="award" class="">
+                   </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                   <div class="text-center p-5">
+                      <img src="{% static 'img/award-logo-1.svg' %}" alt="award" class="">
+                   </div>
+                </div>
+             </div>
           </div>
-        </div>
-
+       </section>
         <!-- about us -->
         <section class="mb-lg-9 my-5" id="about">
           <div class="container">
