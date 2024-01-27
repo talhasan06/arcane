@@ -20,3 +20,9 @@
 .login-bg{
     background-color: #D0D7F4;
 }
+/* .text-secondary a {
+    color: #fff; 
+  } */
+  .text-secondary li a:hover {
+    color: #fff; /* Change the color to your desired hover effect */
+  }

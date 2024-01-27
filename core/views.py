@@ -24,5 +24,3 @@ def home(request,category_slug = None):
         return render (request,'index.html',{'tasks':tasks,'categories':categories,'for_filter':'for_filter'})
     else:
         return render (request,'not_login.html')
-
-

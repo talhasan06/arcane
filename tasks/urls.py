@@ -2,8 +2,9 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import TaskCreateView,CompletedTaskListView,RemainingTaskListView,TaskDetailView,create_category,ToggleCompleteView,delete_task,remove_task,EditTaskView
+from .views import TaskCreateView,CompletedTaskListView,RemainingTaskListView,TaskDetailView,create_category,ToggleCompleteView,delete_task,remove_task,EditTaskView,product
 urlpatterns = [
+    path('product/',product,name='product'),
     path('add_task/',TaskCreateView.as_view(),name='add_task'),
     path('add_category/',create_category,name='add_category'),
     path('completed/',CompletedTaskListView.as_view(), name='completed'),

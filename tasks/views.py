@@ -14,6 +14,9 @@ from django.http import HttpResponseRedirect
 
 categories = Category.objects.all()
 
+def product(request):
+    return render(request,'product.html')
+
 class TaskListView(View):
     def get_template_name(self, slug):
         template_mapping = {
