@@ -13,9 +13,10 @@
         </div>
     </div>
     {% if request.user.is_authenticated and for_filter %}
-        <div class="row row-cols-1 row-cols-md-4 gx-2 bg-body-tertiary">
+        <div class="row row-cols-1 row-cols-md-4 g-3 bg-body-tertiary">
             {% for task in tasks %}
-                <div class="card rounded-4 m-2">
+            <div class="col mb-2">
+                <div class="card">
                     <div class="card-body">
                         <div class="d-flex mb-3">
                             <button class="btn btn-dark rounded-pill">{{task.category}}</button>
@@ -106,6 +107,7 @@
                         <p class="fw-medium"><i class="fa-solid fa-calendar-days"></i> {{task.due_date}}</p>
                     </div>
                 </div>
+              </div>
             {% endfor %}
         </div>
     {% endif %}

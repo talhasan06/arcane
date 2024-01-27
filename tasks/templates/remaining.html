@@ -1,78 +1,80 @@
 {% extends 'index.html' %}
 {% block remaining_content %}
   {% if tasks %}
-  <div class="row row-cols-1 row-cols-md-4 g-4 my-4">
+  <div class="row row-cols-1 row-cols-md-4 g-3 my-4">
     {% for task in tasks %}
-      <div class="card rounded-4 m-2">
-        <div class="card-body">
-            <div class="d-flex mb-3">
-                <button class="btn btn-dark rounded-pill">{{task.category}}</button>
-                <!-- <p><i class="fa-solid fa-ellipsis fs-4"></i></p> -->
-                <div class="dropdown ms-auto">
-                    <i class="fas fa-ellipsis-vertical fs-4" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                    <ul class="dropdown-menu">
-                        <li>
-                          <span class="dropdown-item">
-                            <a href="{% url 'edit_task' task.id %}" class="text-decoration-none text-primary">
-                                <i class="fas fa-pen mx-2"></i> Update
-                            </a>
-                          </span>
-                        </li>
-                        <li>
-                          <span class="dropdown-item">
-                            <a href="{% url 'delete' task.id %}" class="text-decoration-none text-danger">
-                                <i class="fas fa-trash mx-2"></i> Delete
-                            </a>
-                          </span>
-                        </li>
-                      </ul>
-                </div>
-            </div>
-        <a href="{% url 'task_detail' task.id %}" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{ task.id }}">
-            <h5 class="card-title d-flex justify-content-between">{{task.title}}
-              {% if task.completed %}
-              <p class="fs-5"><i class="fa-regular fa-circle-check fw-bold text-success"></i></p>
-              {% else %}
-              <p class="fs-5"><i class="fa-regular fa-hourglass-half text-danger fw-bold"></i></p>
-              {% endif %}
-            </h5>
-        </a>
-        <!-- modal start -->
-        <div class="modal fade" id="exampleModal{{ task.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">{{task.title}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="col mb-2">
+      <div class="card">
+          <div class="card-body">
+              <div class="d-flex mb-3">
+                  <button class="btn btn-dark rounded-pill">{{task.category}}</button>
+                  <!-- <p><i class="fa-solid fa-ellipsis fs-4"></i></p> -->
+                  <div class="dropdown ms-auto">
+                      <i class="fas fa-ellipsis-vertical fs-4" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <span class="dropdown-item">
+                              <a href="{% url 'edit_task' task.id %}" class="text-decoration-none text-primary">
+                                  <i class="fas fa-pen mx-2"></i> Update
+                              </a>
+                            </span>
+                          </li>
+                          <li>
+                            <span class="dropdown-item">
+                              <a href="{% url 'delete' task.id %}" class="text-decoration-none text-danger">
+                                  <i class="fas fa-trash mx-2"></i> Delete
+                              </a>
+                            </span>
+                          </li>
+                        </ul>
+                  </div>
               </div>
-              <div class="modal-body">
-                  <div class="d-flex">
-                      <p class="fw-medium me-1">Status: </p>
-                      {% if task.completed %} 
-                        <p class="text-success rounded px-1" style="background-color: #E5FAF0;">Completed</p> 
-                      {% else %} 
-                        <p class="text-danger rounded px-1" style="background-color:#f19797;">Pending</p> 
-                      {%endif%} 
-                  </div>
-                  <p class="fw-medium py-2 me-1 bg-body-tertiary">Description: <span class="fw-normal">{{task.description}}</span> </p>
-                  {% if not task.completed %}
-                    <a href="{% url 'toggle_complete' task.id %}" class="btn text-white" style="background-color: #7F56D9;"><i class="fa-solid fa-check me-1"></i>mark as done</a>
-                  {% endif %}
-                  <div class="d-flex">
-                      <p class="fw-medium me-1">Due Date:</p>
-                      <p>{{task.due_date}}</p>
-                  </div>
+          <a href="{% url 'task_detail' task.id %}" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{ task.id }}">
+              <h5 class="card-title d-flex justify-content-between">{{task.title}}
+                {% if task.completed %}
+                <p class="fs-5"><i class="fa-regular fa-circle-check fw-bold text-success"></i></p>
+                {% else %}
+                <p class="fs-5"><i class="fa-regular fa-hourglass-half text-danger fw-bold"></i></p>
+                {% endif %}
+              </h5>
+          </a>
+          <!-- modal start -->
+          <div class="modal fade" id="exampleModal{{ task.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">{{task.title}}</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex">
+                        <p class="fw-medium me-1">Status: </p>
+                        {% if task.completed %} 
+                          <p class="text-success rounded px-1" style="background-color: #E5FAF0;">Completed</p> 
+                        {% else %} 
+                          <p class="text-danger rounded px-1" style="background-color:#f19797;">Pending</p> 
+                        {%endif%} 
+                    </div>
+                    <p class="fw-medium py-2 me-1 bg-body-tertiary">Description: <span class="fw-normal">{{task.description}}</span> </p>
+                    {% if not task.completed %}
+                      <a href="{% url 'toggle_complete' task.id %}" class="btn text-white" style="background-color: #7F56D9;"><i class="fa-solid fa-check me-1"></i>mark as done</a>
+                    {% endif %}
+                    <div class="d-flex">
+                        <p class="fw-medium me-1">Due Date:</p>
+                        <p>{{task.due_date}}</p>
+                    </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- model end -->
-          <p class="card-text">{{ task.description |  truncatechars:100 }} {% if value|length > 30 %}...{% endif %}</p>
-        </div>
-        <div class="card-footer bg-white d-flex justify-content-between">
-            <p class="fw-semibold">Priority: {{task.priority}}</p>
-            <p class="fw-medium"><i class="fa-solid fa-calendar-days"></i> {{task.due_date}}</p>
-        </div>
+          <!-- model end -->
+            <p class="card-text">{{ task.description |  truncatechars:100 }} {% if value|length > 30 %}...{% endif %}</p>
+          </div>
+          <div class="card-footer bg-white d-flex justify-content-between">
+              <p class="fw-semibold">Priority: {{task.priority}}</p>
+              <p class="fw-medium"><i class="fa-solid fa-calendar-days"></i> {{task.due_date}}</p>
+          </div>
+      </div>
     </div>
     {% endfor %}
   </div>

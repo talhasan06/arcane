@@ -2,9 +2,10 @@
 {% block all_tasks %}
     <div class="mt-4">
         {% if tasks %}
-            <div class="row row-cols-1 row-cols-md-4 g-2 mb-4">
+            <div class="row row-cols-1 row-cols-md-4 g-3 mb-4">
                 {% for task in tasks %}
-                    <div class="card rounded-4 m-2">
+                <div class="col mb-2">
+                    <div class="card">
                         <div class="card-body">
                             <div class="d-flex mb-3">
                                 <button class="btn btn-dark rounded-pill">{{task.category}}</button>
@@ -76,6 +77,7 @@
                             <p class="fw-medium"><i class="fa-solid fa-calendar-days"></i> {{task.due_date}}</p>
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         {% else %}
