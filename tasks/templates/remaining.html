@@ -54,14 +54,14 @@
                         <p class="text-danger rounded px-1" style="background-color:#f19797;">Pending</p> 
                       {%endif%} 
                   </div>
+                  <p class="fw-medium py-2 me-1 bg-body-tertiary">Description: <span class="fw-normal">{{task.description}}</span> </p>
+                  {% if not task.completed %}
+                    <a href="{% url 'toggle_complete' task.id %}" class="btn text-white" style="background-color: #7F56D9;"><i class="fa-solid fa-check me-1"></i>mark as done</a>
+                  {% endif %}
                   <div class="d-flex">
                       <p class="fw-medium me-1">Due Date:</p>
                       <p>{{task.due_date}}</p>
                   </div>
-              </div>
-              <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button> -->
               </div>
             </div>
           </div>
