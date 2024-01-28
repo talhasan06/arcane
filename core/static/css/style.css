@@ -17,8 +17,8 @@ body{margin-top:20px;}
 .deneb_footer .widget_wrapper {
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 200px;
-    padding-bottom: 70px;
+    padding-top:60px;
+    border-top: 2px solid #ccc;
 }
 @media (max-width: 767px) {
     .deneb_footer .widget_wrapper .widget {
@@ -63,10 +63,10 @@ body{margin-top:20px;}
 }
 .deneb_footer .widget_wrapper .widegt_about .social li a:hover,
 .deneb_footer .widget_wrapper .widegt_about .social li a:focus {
-    background-image: -moz-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
-    background-image: -webkit-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
-    background-image: -ms-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
-    color: #fff;
+    background-image: -moz-linear-gradient(0deg, #FAF9F6 0%, #FAF9F6 100%);
+    background-image: -webkit-linear-gradient(0deg, #FAF9F6 0%, #FAF9F6 100%);
+    background-image: -ms-linear-gradient(0deg, #FAF9F6 0%, #FAF9F6 100%);
+    color: #000000; /* Black text */
     box-shadow: 2.5px 4.33px 15px 0px rgba(254, 176, 0, 0.4);
 }
 .deneb_footer .widget_wrapper .widget_link ul li {
