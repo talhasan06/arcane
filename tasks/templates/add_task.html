@@ -1,88 +1,109 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="container my-3 bg-body-tertiary py-3">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">Add Task</div>
-        <div class="card-body">
-          <form method="post" class="form">
-            {% csrf_token %}
-            <div class="form-group">
-              <label for="{{ form.title.id_for_label }}">Title:</label>
-              {{ form.title }}
-              {% if form.title.errors %}
-                  <span class="text-danger">{{ form.title.errors.0 }}</span>
-              {% endif %}
-            </div>
-            <div class="form-group my-2">
-                <label for="{{ form.description.id_for_label }}">Description:</label>
-                {{ form.description }}
-                {% if form.description.errors %}
-                    <span class="text-danger">{{ form.description.errors.0 }}</span>
-                {% endif %}
-            </div>
-            <div class="form-group my-2">
-                <label for="{{ form.due_date.id_for_label }}">Due date:</label>
-                {{ form.due_date }}
-                {% if form.due_date.errors %}
-                  <span class="text-danger">{{ form.due_date.errors.0 }}</span>
-                {% endif %}
-            </div>
-            <div class="form-group my-2">
-                <label for="{{ form.due_time.id_for_label }}">Due time:</label>
-                {{ form.due_time }}
-                {% if form.due_time.errors %}
-                    <span class="text-danger">{{ form.due_time.errors.0 }}</span>
-                {% endif %}
-            </div>
-         
-            <div class="form-group col-12 my-2">
-                <label for="{{ form.priority.id_for_label }}">Priority:</label>
-                {{ form.priority }}
-                {% if form.priority.errors %}
-                    <span class="text-danger">{{ form.priority.errors.0 }}</span>
-                {% endif %}
-            </div>
-            <div class="form-group col-12 my-2">
-                <label for="{{ form.category.id_for_label }}">Category:</label>
-                <select class="form-select" aria-label="Default select example" name="{{ form.category.name }}">
-                    <option selected>Open this select menu</option>
-                    {% for cat in categories %}
-                    <option value="{{ cat.id }}">{{ cat.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <a style="cursor: pointer;" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">add new category</a>
-            <div class="d-flex justify-content-between mt-2">
-              <button type="submit" class="btn btn-primary">Add Task</button>
-              <a href="{% url 'home' %}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">back home</a>
-            </div>
-          </form>
-        </div>
+{% extends 'index.html' %}
+{% block add_task %}
+<div class="bg-body-tertiary p-5 col-12">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header text-center py-3 fs-4">Add Task</div>
+      <div class="card-body">
+        <form method="post" class="form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Title:</label>
+            {{ form.title }} {% if form.title.errors %}
+            <span class="text-danger">{{ form.title.errors.0 }}</span>
+            {% endif %}
+          </div>
+          <div class="form-group my-2">
+            <label for="{{ form.description.id_for_label }}"
+              >Description:</label
+            >
+            {{ form.description }} {% if form.description.errors %}
+            <span class="text-danger">{{ form.description.errors.0 }}</span>
+            {% endif %}
+          </div>
+          <div class="form-group my-2">
+            <label for="{{ form.due_date.id_for_label }}">Due date:</label>
+            {{ form.due_date }} {% if form.due_date.errors %}
+            <span class="text-danger">{{ form.due_date.errors.0 }}</span>
+            {% endif %}
+          </div>
+          <div class="form-group my-2">
+            <label for="{{ form.due_time.id_for_label }}">Due time:</label>
+            {{ form.due_time }} {% if form.due_time.errors %}
+            <span class="text-danger">{{ form.due_time.errors.0 }}</span>
+            {% endif %}
+          </div>
+
+          <div class="form-group col-12 my-2">
+            <label for="{{ form.priority.id_for_label }}">Priority:</label>
+            {{ form.priority }} {% if form.priority.errors %}
+            <span class="text-danger">{{ form.priority.errors.0 }}</span>
+            {% endif %}
+          </div>
+          <div class="form-group col-12 my-2">
+            <label for="{{ form.category.id_for_label }}">Category:</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="{{ form.category.name }}"
+            >
+              <option selected>Open this select menu</option>
+              {% for cat in categories %}
+              <option value="{{ cat.id }}">{{ cat.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <a
+            style="cursor: pointer"
+            class="text-primary text-decoration-none"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            >add new category</a
+          >
+          <div class="d-flex justify-content-between mt-2">
+            <button type="submit" class="btn btn-primary">Add Task</button>
+            <a
+              href="{% url 'home' %}"
+              class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              >back home</a
+            >
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 <!-- modal start -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add new Category</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="{% url 'add_category' %}">
-
-            {% csrf_token %}
-          
-            {{ category_form }}
-            <button type="submit" class="btn btn-primary mt-2">Add category</button>
-          </form>
-        </div>
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Add new Category
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'add_category' %}">
+          {% csrf_token %} {{ category_form }}
+          <button type="submit" class="btn btn-primary mt-2">
+            Add category
+          </button>
+        </form>
+      </div>
     </div>
-    </div>
+  </div>
 </div>
 <!-- modal end -->
 {% endblock %}

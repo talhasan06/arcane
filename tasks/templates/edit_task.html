@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
-{% block content %}
+{% block edit_task %}
 
 <div class="container my-3 bg-body-tertiary p-3">
-    <div class="col-12 d-md-flex justify-content-center">
+    <div class="col-12">
         <form method="post" class="form d-flex flex-column">
             {% csrf_token %}
             <div class="form-group">

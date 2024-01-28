@@ -23,4 +23,13 @@ def home(request,category_slug = None):
             categories = all_categories 
         return render (request,'index.html',{'tasks':tasks,'categories':categories,'for_filter':'for_filter'})
     else:
-        return render (request,'not_login.html')
+        return render (request,'base.html')
+    
+def about_us(request):
+        return render(request,'about_us.html')
+
+def contact(request):
+        return render(request,'contact.html')
+
+def product(request):
+    return render(request,'product.html')

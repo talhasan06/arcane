@@ -1,0 +1,57 @@
+{% if request.user.is_authenticated %}
+    <nav class="navbar bg-body-tertiary mb-3">
+      <div class="container">
+        
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div>
+            <p class="fs-5 my-auto text-secondary">{{user.first_name}} {{user.last_name}}</p>
+          </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Arcane</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body container">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'add_task' %}">Create new task</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}">All Tasks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'completed' %}">Completed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'remaining' %}">Pending</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter by category
+                </a>
+                <ul class="dropdown-menu">
+                    {% for cat in categories %}
+                      <li><a class="dropdown-item" href="{% url 'category_wise_post' cat.slug %}">{{cat.name}}</a></li>
+                    {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort by
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'task_list' 'due-date' %}" id="dueDateSort">Due Date</a></li>
+                  <li><a class="dropdown-item" href="{% url 'task_list' 'priority' %}">Priority</a></li>
+                  <li><a class="dropdown-item" href="{% url 'task_list' 'category' %}">Category</a></li>
+                </ul>
+              </li>
+              <a class="text-decoration-none my-2" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+{% endif %}

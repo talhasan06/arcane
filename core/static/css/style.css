@@ -6,23 +6,10 @@
 .card-img-top {
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
 }
-
-.nav-link {
-    color: black;
-    text-decoration: none;
+.nav-link.active{
+    
+    font-weight: bold;
 }
-
-/* .active {
-    color: blue;
-    border-bottom: 2px solid blue;
-} */
-
 .login-bg{
     background-color: #D0D7F4;
 }
-/* .text-secondary a {
-    color: #fff; 
-  } */
-  .text-secondary li a:hover {
-    color: #fff; /* Change the color to your desired hover effect */
-  }
