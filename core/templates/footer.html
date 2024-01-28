@@ -1,59 +1,4 @@
-<!-- <footer class="bg-black py-5">
-  <div class="container">
-      <div class="row">
-
-          <div class="col-md-3 col-12 me-auto mb-4">
-              <h1 class="text-white mb-3"><a href="{% url 'home' %}" class="text-secondary text-decoration-none">Arcane</a></h1>
-              <p class="texxt-secondary text-muted mt-lg-5 mb-4 mb-lg-0" style="font-size: 20px;">Copyright © 2024 <strong>Arcane .inc</strong></p>
-              <br>
-              <p style="font-size: 20px;">Designed by Arcane</p>
-          </div>
-
-          <div class="col-md-5 col-12">
-              <h3 class="text-white mb-3">Sitemap</h3>
-
-              <div class="text-secondary" style="font-size: 18px;">
-                  <li class="list-unstyled"><a href="{% url 'about' %}" class="text-decoration-none text-secondary">About</a></li>
-                  <li class="list-unstyled"><a href="#" class="text-decoration-none text-secondary">Privacy policy</a></li>
-                  <li class="list-unstyled"><a href="#" class="text-decoration-none text-secondary">FAQs</a></li>
-                  <li class="list-unstyled"><a href="{% url 'contact' %}" class="text-decoration-none text-secondary">Contact</a></li>
-              </div>
-          </div>
-
-          <div class="col-lg-3">
-              <h3 class="text-white mb-3">Social</h3>
-
-              <p style="font-size: 20px;">
-                <i class="fa-brands fa-youtube m-2"></i>
-                <i class="fa-brands fa-whatsapp m-2"></i>
-                <i class="fa-brands fa-skype m-2"></i>
-                <i class="fa-brands fa-instagram m-2"></i>
-              </p>
-          </div>
-
-      </div>
-  </div>
-</footer> -->
-
-<!-- <section class="deneb_cta">
-	<div class="container">
-		<div class="cta_wrapper">
-			<div class="row align-items-center">
-				<div class="col-lg-7">
-					<div class="cta_content">
-						<h3>Have Any Project in Mind ?</h3>
-						<p>Curabitur libero eros, efficitur sit amet sodales tincidunt, aliquet et leo sed ut nibh feugiat, auctor enim quis.</p>
-					</div>
-				</div>
-				<div class="col-lg-5">
-					<div class="button_box">
-						<a href="#" class="btn btn-warning">Get start</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section> -->
+{% load static %}
 <footer class="deneb_footer mt-3">
 	<div class="widget_wrapper" style="background-image: url(http://demo.tortoizthemes.com/deneb-html/deneb-ltr/assets/images/footer_bg.png);">
 		<div class="container">
@@ -61,9 +6,9 @@
 				<div class="col-lg-4 col-md-6 col-12">
 					<div class="widget widegt_about">
 						<div class="widget_title">
-							<img src="assets/images/logo_1.png" class="img-fluid" alt="">
+							<img class="" src="{% static 'img/to-do-list.png' %}" alt="">
 						</div>
-						<p>Quisque orci nisl, viverra et sem ac, tincidunt egestas massa. Morbi est arcu, hendrerit ac vehicula condimentum, euismod nec tortor praesent consequat urna.</p>
+						<p>Task management app Arcane is a tool designed to help users organize, track, and manage their tasks. These apps can be used for both personal and professional purposes, offering features like task creation, deadline setting, task prioritization, and collaboration tools</p>
 						<ul class="social">
 							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
