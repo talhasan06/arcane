@@ -1,161 +1,257 @@
 {% load static %}
 <!-- banner -->
 <div class="container">
-   <section class="my-5">
-     <div class="row flex-sm-clumn flex-row">
-       <!-- col-1 -->
-       <div class="col-12 col-md-5 d-flex flex-column align-items-start mb-3">
-         <p class="fw-bold" style="font-size: 46px">
-           Organize <br />
-           yourwork <br />
-           and Life, <span class="text-primary">Finally.</span>
-         </p>
-         <p class="fw-medium">
-           Become focused,organized, and calm with TodoList.Worlds #11 task manager
-           and to-do list app
-         </p>
-         <div class="d-flex w-100">
-           <input
-             class="form-control me-2 w-50"
-             type="search"
-             placeholder="example@gmail.com"
-             aria-label="Search"
-             disabled
-           />
-           <a href="{% url 'login' %}" class="btn btn-primary d-block"
-             >Get Start</a
-           >
-         </div>
-       </div>
-       <!-- col-2 -->
-       <div class="col-12 col-md-7">
-         <img
-           class="w-100"
-           src="{% static 'img/task_banner.png' %}"
-           alt="task banner"
-         />
-       </div>
-     </div>
-   </section>
-   
-   <!-- tagline below banner -->
-   <div class="text-center my-5">
-     <p class="text-uppercase fw-medium">join over 2000 highly productive teams</p>
-   </div>
-   <!-- cards -->
-   <section class="mb-2 d-none d-md-block">
-     <div class="row row-cols-1 row-cols-md-4 g-4">
-       <div class="col-12">
-         <div
-           class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
-           style="height: 14rem"
-         >
-           <p class="text-success m-0 p-0" style="font-size: 50px">
-             <i class="fa-solid fa-file-shield"></i>
-           </p>
-           <div class="mt-2 text-center">
-             <span class="fw-semibold">Secure</span>
-             <p class="fw-normal">and compliant</p>
-           </div>
-         </div>
-       </div>
-       <div class="col-12">
-         <div
-           class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
-           style="height: 14rem"
-         >
-           <p class="text-info m-0 p-0" style="font-size: 50px">
-             <i class="fa-solid fa-people-group"></i>
-           </p>
-           <div class="mt-2 text-center">
-             <span class="fw-semibold">Happy Teams</span>
-             <p class="fw-normal">worldwide</p>
-           </div>
-         </div>
-       </div>
-       <div class="col-12">
-         <div
-           class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
-           style="height: 14rem"
-         >
-           <p class="text-danger-emphasis m-0 p-0" style="font-size: 50px">
-             <i class="fa-solid fa-list-check"></i>
-           </p>
-           <div class="mt-2 text-center">
-             <span class="fw-semibold">Manage</span>
-             <p class="fw-normal">your tasks</p>
-           </div>
-         </div>
-       </div>
-       <div class="col-12">
-         <div
-           class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
-           style="height: 14rem"
-         >
-           <p class="text-warning m-0 p-0" style="font-size: 50px">
-             <i class="fa-solid fa-folder-open"></i>
-           </p>
-           <div class="mt-2 text-center">
-             <span class="fw-semibold">Share</span>
-             <p class="fw-normal">with the world</p>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
-   <!-- reviews -->
-   <section class="my-lg-9 my-5">
-     <div class="container">
-       <div class="row border-top border-bottom">
-         <div
-           class="col-lg-4 col-md-4 col-12 border-end-md border-bottom border-bottom-md-0"
-         >
-           <div class="text-center p-5">
-             <img src="{% static 'img/award-logo-3.svg' %}" alt="award" class="" />
-           </div>
-         </div>
-         <div
-           class="col-lg-4 col-md-4 col-12 border-end-md border-bottom border-bottom-md-0"
-         >
-           <div class="text-center p-5">
-             <img src="{% static 'img/award-logo-2.svg' %}" alt="award" class="" />
-           </div>
-         </div>
-         <div class="col-lg-4 col-md-4 col-12">
-           <div class="text-center p-5">
-             <img src="{% static 'img/award-logo-1.svg' %}" alt="award" class="" />
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
-   <!-- GET STARTED WITH A FREE PLAN -->
-   <section class="row my-5" id="startwith">
-     <div class="col-12 col-md-6">
-       <img src="{% static 'img/task-manage.jpg' %}" alt="" class="w-100" />
-     </div>
-     <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
-       <h1>Get Started With <br />A Free plan</h1>
-       <p class="text-secondary my-3">
-         Define doesn't just fill up your entire calendar and present you from
-         being available.Instead define will dynamically shift events from free to
-         busy on notices.
-       </p>
-       <div class="d-flex text-secondary my-3">
-         <p class="me-3">
-           <i class="fa-regular fa-circle-check text-success me-2"></i>Free 30-day
-           trial
-         </p>
-         <p>
-           <i class="fa-regular fa-circle-check text-success me-2"></i>No credit
-           card required
-         </p>
-       </div>
-       <div>
-         <a href="{% url 'register' %}" class="btn btn-success rounded-pill"
-           ><span class="px-1">Try Free Trial</span></a
-         >
-       </div>
-     </div>
-   </section>
+  <section class="my-5">
+    <div class="row flex-sm-clumn flex-row">
+      <!-- col-1 -->
+      <div class="col-12 col-md-5 d-flex flex-column align-items-start mb-3">
+        <p class="fw-bold" style="font-size: 46px">
+          Organize <br />
+          yourwork <br />
+          and Life, <span class="text-primary">Finally.</span>
+        </p>
+        <p class="fw-medium">
+          Become focused,organized, and calm with TodoList.Worlds #11 task
+          manager and to-do list app
+        </p>
+        <div class="d-flex w-100">
+          <input
+            class="form-control me-2 w-50"
+            type="search"
+            placeholder="example@gmail.com"
+            aria-label="Search"
+            disabled
+          />
+          <a href="{% url 'login' %}" class="btn btn-primary d-block"
+            >Get Start</a
+          >
+        </div>
+      </div>
+      <!-- col-2 -->
+      <div class="col-12 col-md-7">
+        <img
+          class="w-100"
+          src="{% static 'img/task_banner.png' %}"
+          alt="task banner"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- tagline below banner -->
+  <div class="text-center my-5">
+    <p class="text-uppercase fw-medium">
+      join over 2000 highly productive teams
+    </p>
+  </div>
+  <!-- cards -->
+  <section class="mb-2 d-none d-md-block">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col-12">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
+          style="height: 14rem"
+        >
+          <p class="text-success m-0 p-0" style="font-size: 50px">
+            <i class="fa-solid fa-file-shield"></i>
+          </p>
+          <div class="mt-2 text-center">
+            <span class="fw-semibold">Secure</span>
+            <p class="fw-normal">and compliant</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
+          style="height: 14rem"
+        >
+          <p class="text-info m-0 p-0" style="font-size: 50px">
+            <i class="fa-solid fa-people-group"></i>
+          </p>
+          <div class="mt-2 text-center">
+            <span class="fw-semibold">Happy Teams</span>
+            <p class="fw-normal">worldwide</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
+          style="height: 14rem"
+        >
+          <p class="text-danger-emphasis m-0 p-0" style="font-size: 50px">
+            <i class="fa-solid fa-list-check"></i>
+          </p>
+          <div class="mt-2 text-center">
+            <span class="fw-semibold">Manage</span>
+            <p class="fw-normal">your tasks</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center rounded-4 shadow w-100"
+          style="height: 14rem"
+        >
+          <p class="text-warning m-0 p-0" style="font-size: 50px">
+            <i class="fa-solid fa-folder-open"></i>
+          </p>
+          <div class="mt-2 text-center">
+            <span class="fw-semibold">Share</span>
+            <p class="fw-normal">with the world</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- reviews -->
+  <section class="my-lg-9 my-5">
+    <div class="container">
+      <div class="row border-top border-bottom">
+        <div
+          class="col-lg-4 col-md-4 col-12 border-end-md border-bottom border-bottom-md-0"
+        >
+          <div class="text-center p-5">
+            <img
+              src="{% static 'img/award-logo-3.svg' %}"
+              alt="award"
+              class=""
+            />
+          </div>
+        </div>
+        <div
+          class="col-lg-4 col-md-4 col-12 border-end-md border-bottom border-bottom-md-0"
+        >
+          <div class="text-center p-5">
+            <img
+              src="{% static 'img/award-logo-2.svg' %}"
+              alt="award"
+              class=""
+            />
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-12">
+          <div class="text-center p-5">
+            <img
+              src="{% static 'img/award-logo-1.svg' %}"
+              alt="award"
+              class=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- GET STARTED WITH A FREE PLAN -->
+  <section class="row my-5" id="startwith">
+    <div class="col-12 col-md-6">
+      <img src="{% static 'img/task-manage.jpg' %}" alt="" class="w-100" />
+    </div>
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+      <h1>Get Started With <br />A Free plan</h1>
+      <p class="text-secondary my-3">
+        Define doesn't just fill up your entire calendar and present you from
+        being available.Instead define will dynamically shift events from free
+        to busy on notices.
+      </p>
+      <div class="d-flex text-secondary my-3">
+        <p class="me-3">
+          <i class="fa-regular fa-circle-check text-success me-2"></i>Free
+          30-day trial
+        </p>
+        <p>
+          <i class="fa-regular fa-circle-check text-success me-2"></i>No credit
+          card required
+        </p>
+      </div>
+      <div>
+        <a href="{% url 'register' %}" class="btn btn-success rounded-pill"
+          ><span class="px-1">Try Free Trial</span></a
+        >
+      </div>
+    </div>
+  </section>
+  <!-- review text -->
+  <section class="text-center py-5">
+    <p>Not Yet Convinced?</p>
+    <p class="fs-1 fw-bold">Read Customer Reviews</p>
+  </section>
+  <!-- review -->
+  <section
+    class=" mb-5 swiffy-slider slider-item-show2 slider-nav-sm slider-nav-page slider-item-snapstart slider-item-nogap slider-nav-round slider-nav-dark slider-indicators-sm slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-slideup"
+  >
+    <div class="slider-container">
+      <div class="p-3 p-xl-5 text-light" style="background-color: #354f52">
+        <div class="d-flex">
+          <img class="rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+          <div class="ms-3">
+            <p>
+              In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+            </p>
+            <p class="fw-bold">Anna Vandana</p>
+            <p>CEO - <span class="text-primary">SpecTech</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="p-3 p-xl-5 text-light" style="background-color: #2f3e46">
+        <div class="d-flex">
+          <img class="rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar2.png">
+          <div class="ms-3">
+            <p>
+              In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+            </p>
+            <p class="fw-bold">John Doe</p>
+            <p>CEO - <span class="text-primary">Illiron</span></p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="p-3 p-xl-5 text-light slide-visible"
+        style="background-color: #52796f"
+      >
+      <div class="d-flex">
+        <img class="rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar3.png">
+        <div class="ms-3">
+          <p>
+            In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+          </p>
+          <p class="fw-bold">Maria lean</p>
+          <p>CTO - <span class="text-primary">Specta</span></p>
+        </div>
+      </div>
+      </div>
+      <div
+        class="p-3 p-xl-5 text-light slide-visible"
+        style="background-color: #354f52"
+      >
+      <div class="d-flex">
+        <img class="rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar4.png">
+        <div class="ms-3">
+          <p>
+            In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+          </p>
+          <p class="fw-bold">Alen Smith</p>
+          <p>CEO - <span class="text-primary">Arinora</span></p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <button type="button" class="slider-nav" aria-label="Go left"></button>
+    <button
+      type="button"
+      class="slider-nav slider-nav-next"
+      aria-label="Go left"
+    ></button>
+
+    <div class="slider-indicators d-md-none">
+      <button class="" aria-label="Go to slide"></button>
+      <button aria-label="Go to slide"></button>
+      <button aria-label="Go to slide"></button>
+      <button aria-label="Go to slide" class="active"></button>
+      <button aria-label="Go to slide"></button>
+      <button aria-label="Go to slide"></button>
+    </div>
+  </section>
 </div>
